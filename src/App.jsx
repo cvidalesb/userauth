@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
-import Home from './components/Home';
+// import Home from './components/Home'; // Removed - going directly to login
 import Login from './components/Login';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
@@ -14,6 +14,8 @@ function App() {
       <Router>
         <div className="App">
           <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route 
               path="/dashboard" 
@@ -23,7 +25,7 @@ function App() {
                 </PrivateRoute>
               } 
             />
-            <Route path="*" element={<Navigate to="/" />} />
+            <Route path="*" element={<Navigate to="/login" />} />
           </Routes>
         </div>
       </Router>
